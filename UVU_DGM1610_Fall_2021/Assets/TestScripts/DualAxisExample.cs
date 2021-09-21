@@ -17,7 +17,7 @@ public class DualAxisExample : MonoBehaviour
         float xPos = h * hRange;
         float yPos = v * vRange;
         
-        transform.position = new Vector3(xPos, 0, vPos);
+        transform.position = new Vector3(xPos, 0, yPos);
         horizontalValueDisplayText.text = h.ToString("F2");
         verticalValueDisplayText.text = v.ToString("F2");
     }
