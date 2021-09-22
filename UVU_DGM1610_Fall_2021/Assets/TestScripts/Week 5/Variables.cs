@@ -2,34 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Variables : MonoBehaviour;
+public class Variables : MonoBehaviour
 
-string myName = "Autumn Jones";
-Debug.Log(myName);
+{
+    string myName = "Autumn Jones";
+    char myInitial = 'A';
 
-char myInitial = 'A';
-Debug.Log(myInitial);
+    int myAge = 20;
 
-int myAge = 20;
-Debug.Log(myAge);
+    float myExactAge = 19.9F;
 
-float myExactAge = 19.9F;
-Debug.Log(myExactAge);
+    float myHeight = 5.3F;
 
-float myHeight = 5.3F;
-myHeight = 6.3F;
-Debug.Log(myHeight);
+    double myExactHeight = 5.3999999D;
 
-double myExactHeight = 5.3999999D;
-Debug.Log(myExactHeight);
+    long myStudentLoanDebt;
 
-long myStudentLoanDebt;
-myStudentLoanDebt = 100000000L;
-Debug.Log(myStudentLoanDebt);
+    bool myBool = true;
 
-bool myBool = true;
-Debug.Log(myBool);
-
+    void Start()
+    {
+        Debug.Log(myName);
+        Debug.Log(myInitial);
+        Debug.Log(myAge);
+        Debug.Log(myExactAge);
+        Debug.Log(myHeight);
+        Debug.Log(myExactHeight);
+        Debug.Log(myStudentLoanDebt);
+        Debug.Log(myBool);
+        myHeight = 6.3F;
+        myStudentLoanDebt = 100000000L;
+    }
+}
 
 
 
