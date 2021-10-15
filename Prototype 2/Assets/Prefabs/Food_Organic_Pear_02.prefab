@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5634393067782568652}
   - component: {fileID: 5634393067781497074}
   - component: {fileID: 5634393068959496318}
+  - component: {fileID: 7015930275496573322}
   m_Layer: 0
   m_Name: Food_Organic_Pear_02
   m_TagString: Untagged
@@ -96,3 +97,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
+--- !u!114 &7015930275496573322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634393067783506754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c751796e5caeb14ba2ec100d7e3be69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
