@@ -7,7 +7,7 @@ public class PlayerControllerX : MonoBehaviour
     public GameObject dogPrefab;
     private bool canSpawnDog = true;
 
-    private float dogSpawnDelay = 1.5f;
+    private float dogSpawnDelay = 1.0f;
     
     // Update is called once per frame
     void Update()
