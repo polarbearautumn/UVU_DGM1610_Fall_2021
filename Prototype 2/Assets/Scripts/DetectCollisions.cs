@@ -1,12 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveForward : MonoBehaviour
+public class DetectCollisions : MonoBehaviour
 {
-    // Public variable
-    public float speed = 40.0f;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +14,13 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Moves food forward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        
+    }
+
+    // Destroys food and animal when they collide
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        Destroy(other.gameObject);
     }
 }

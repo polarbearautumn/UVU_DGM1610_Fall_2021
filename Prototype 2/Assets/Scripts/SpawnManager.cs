@@ -29,10 +29,10 @@ public class SpawnManager : MonoBehaviour
         // Chooses a random animal prefab from our animal index
         int animalIndex = Random.Range(0, animalPrefabs.Length);
         
-        // Chooses a random x position to spawn a random animal prefab at
+        // Chooses a random x position to spawn a random animal at
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
             
-        // Creates the animal prefab in game
+        // Creates the animal in game
         Instantiate(animalPrefabs[animalIndex], spawnPos, animalPrefabs[animalIndex].transform.rotation);
     }
     
