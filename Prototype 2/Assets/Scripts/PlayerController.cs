@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Stop player from leaving left side of screen
         if (transform.position.x < -xRange)
