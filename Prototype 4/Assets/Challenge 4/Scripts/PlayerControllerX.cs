@@ -5,8 +5,13 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private float speed = 500;
+    public float speed = 500;
+    private float normalSpeed = 500;
+    private float boostSpeed = 1200;
+    
     private GameObject focalPoint;
+
+    public ParticleSystem dirtParticle;
 
     public bool hasPowerup;
     public GameObject powerupIndicator;
@@ -23,9 +28,21 @@ public class PlayerControllerX : MonoBehaviour
 
     void Update()
     {
+
         // Add force to player in direction of the focal point (and camera)
         float verticalInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime); 
+        playerRb.AddForce(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime);
+        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            speed = boostSpeed;
+            dirtParticle.Play();
+        }
+        else if(Input.GetKeyUp(KeyCode.Space))
+        {
+            speed = normalSpeed;
+            dirtParticle.Stop();
+        }
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
@@ -40,6 +57,7 @@ public class PlayerControllerX : MonoBehaviour
             Destroy(other.gameObject);
             hasPowerup = true;
             powerupIndicator.SetActive(true);
+            StartCoroutine(PowerupCooldown());
         }
     }
 
