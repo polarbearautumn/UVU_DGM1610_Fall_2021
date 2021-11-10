@@ -10,29 +10,42 @@ public class SpawnManager : MonoBehaviour
 
     private float xSpawnRange = 8.4f;
     private float ySpawnRange = 4.4f;
+    private float xSpawnRangeObjectMax = 8.4f;
+    private float xSpawnRangeObjectMin = 0.0f;
 
+    
     // Start is called before the first frame update
     void Start()
     {
         SpawnObjects();
-        SpawnRandomObtacles();
+        SpawnRandomObstacles();
     }
 
+    
     // Update is called once per frame
     void Update()
     {
         
     }
     
+    
+    // Spawns all 4 different Objects in a random position on only the right half of the screen
     void SpawnObjects()
     {
         for (int i = 0; i < 4; i++)
         {
-            Instantiate(objects[i], GenerateSpawnPosition(), objects[i].transform.rotation);
+            float randomX = Random.Range(xSpawnRangeObjectMin, xSpawnRangeObjectMax);
+            float randomY = Random.Range(-ySpawnRange, ySpawnRange);
+
+            Vector2 spawnPos = new Vector2(randomX, randomY);
+
+            Instantiate(objects[i], spawnPos, objects[i].transform.rotation);
         }
     }
-
-    void SpawnRandomObtacles()
+    
+    
+    // Spawns 5 random obstacles in a random position
+    void SpawnRandomObstacles()
     {
         for (int i = 0; i < 5; i++)
         {
@@ -44,6 +57,8 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    
+    // Generates a random spawn position for the obstacles
     private Vector3 GenerateSpawnPosition()
     {
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);

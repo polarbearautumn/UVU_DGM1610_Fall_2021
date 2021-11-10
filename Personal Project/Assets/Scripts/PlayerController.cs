@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D playerRb;
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,30 +28,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ConstrainPlayerPosition();
+        
     }
 
+    
     // Moves the player using FixedUpdate rather than Update
     private void FixedUpdate()
     {
         MovePlayer();
     }
 
+    
     // Moves the player based off of arrow key input
     void MovePlayer()
     {
         
-        // Float variables
+        // MovePlayer variables
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         float angleRadians = Mathf.Atan2(verticalInput, horizontalInput);
         float offsetAngle = 90;
         
         
-        // Manually updates player position by adding the current position to the position inputted
-        // transform.position += new Vector3(Time.deltaTime * speed * horizontalInput,
-        //     Time.deltaTime * speed * verticalInput);
-        
+        // Moves the player using its Rigidbody based off of arrow key input
         playerRb.AddForce(Vector2.right * speed * horizontalInput);
         playerRb.AddForce(Vector2.up * speed * verticalInput);
 
@@ -69,43 +69,16 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    // Prevents the player from leaving the game scene
-    // void ConstrainPlayerPosition()
-    // {
-    //     
-    //     // Constrains the player within the y bounds of the game scene
-    //     if (transform.position.y > yBound)
-    //     {
-    //         transform.position = new Vector3(transform.position.x, yBound);
-    //     }
-    //
-    //     if (transform.position.y < -yBound)
-    //     {
-    //         transform.position = new Vector3(transform.position.x, -yBound);
-    //     }
-    //
-    //     
-    //     // Constrains the player within the x bounds of the game scene
-    //     if (transform.position.x > xBound)
-    //     {
-    //         transform.position = new Vector3(xBound, transform.position.y);
-    //     }
-    //     
-    //     if (transform.position.x < -xBound)
-    //     {
-    //         transform.position = new Vector3(-xBound, transform.position.y);
-    //     } 
-        
-    // }
-
-    // If the player collides with an object, the object is destroyed. If the player collides with an enemy, the player is destroyed. 
+    // Handles player collisions. 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // If the player collides with an object, the object is destroyed.
         if (other.gameObject.CompareTag("Object"))
         {
             Destroy(other.gameObject);
         }
         
+        // If the player collides with an enemy, the player is destroyed.
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
