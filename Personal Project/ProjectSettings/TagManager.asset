@@ -7,6 +7,7 @@ TagManager:
   - Object
   - Obstacle
   - Enemy
+  - Despawn Border
   layers:
   - Default
   - TransparentFX

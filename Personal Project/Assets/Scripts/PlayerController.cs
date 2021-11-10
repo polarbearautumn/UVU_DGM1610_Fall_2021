@@ -8,12 +8,6 @@ public class PlayerController : MonoBehaviour
     
     // Public and private variables
     public float speed = 5.0f;
-    
-    private float yBound = 4.4f;
-    private float xBound = 8.4f;
-    
-    private float horizontalInput;
-    private float verticalInput;
 
     private Rigidbody2D playerRb;
     

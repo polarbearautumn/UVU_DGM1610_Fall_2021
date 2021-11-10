@@ -5,38 +5,24 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Public and private variables
-    private float speed;
-    private Vector2 direction;
+    public float speed = 0.3f;
+
+    private Rigidbody2D enemyRb;
+    private GameObject player;
+    
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyRb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-    }
-
-    void SpawnEnemyUp()
-    {
-        
-    }
-
-    void SpawnEnemyDown()
-    {
-        
-    }
-
-    void SpawnEnemyRight()
-    {
-        
-    }
-
-    void SpawnEnemyLeft()
-    {
-        
+        // Moves the enemies using their Rigidbodies
+        enemyRb.AddForce(transform.up * speed);
     }
 }
