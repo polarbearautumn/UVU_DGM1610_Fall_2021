@@ -8,6 +8,8 @@ public class DifficultyButton : MonoBehaviour
     // Public and private variables
     private Button button;
     private GameManager gameManager;
+
+    public int difficulty;
     
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,10 @@ public class DifficultyButton : MonoBehaviour
         
     }
 
+    // Sets the difficulty (spawn rate of GameObjects) depending on which button is clicked
     void SetDifficulty()
     {
         Debug.Log(gameObject.name + " was clicked");
-        gameManager.StartGame();
+        gameManager.StartGame(difficulty);
     }
 }

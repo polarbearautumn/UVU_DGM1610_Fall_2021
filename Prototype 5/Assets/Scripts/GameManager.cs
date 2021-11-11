@@ -68,9 +68,10 @@ public class GameManager : MonoBehaviour
 
 
     // Starts the Game
-    public void StartGame()
+    public void StartGame(int difficulty)
     {
         isGameActive = true;
+        spawnRate /= difficulty;
         
         StartCoroutine(SpawnTarget());
         score = 0;
