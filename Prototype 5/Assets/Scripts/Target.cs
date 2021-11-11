@@ -1,26 +1,70 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Target : MonoBehaviour
 {
     // Public and private variables
     private Rigidbody targetRb;
+
+    private float minSpeed = 12;
+    private float maxSpeed = 16;
+    
+    private float maxTorque = 10;
+    
+    private float xRange = 4;
+    private float ySpawnPos = -2;
+
     
     // Start is called before the first frame update
     void Start()
     {
         targetRb = gameObject.GetComponent<Rigidbody>();
         
-        targetRb.AddForce(Vector3.up * Random.Range(12, 16), ForceMode.Impulse);
-        targetRb.AddTorque(Random.Range(-10,10), Random.Range(-10,10), Random.Range(-10,10), ForceMode.Impulse);
+        targetRb.AddForce(RandomForce(), ForceMode.Impulse);
+        targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
 
-        transform.position = new Vector3(Random.Range(-4, 4), -6);
+        transform.position = RandomSpawnPos();
     }
 
+    
     // Update is called once per frame
     void Update()
     {
         
+    }
+    
+    
+    // Destroys GameObject when clicked with the mouse
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
+
+    // Destroys GameObject when it collides with the sensor 
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
+
+    
+    // Adds a random amount of force to a target in the upwards direction
+    Vector3 RandomForce()
+    {
+        return Vector3.up * Random.Range(minSpeed, maxSpeed);
+    }
+
+    // Adds a random amount of torque to a target in any direction
+    float RandomTorque()
+    {
+        return Random.Range(-maxTorque, maxTorque);
+    }
+
+    // Places a target at a random x range and specified y range when instantiated
+    Vector3 RandomSpawnPos()
+    {
+        return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
     }
 }
