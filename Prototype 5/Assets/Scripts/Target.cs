@@ -8,6 +8,7 @@ public class Target : MonoBehaviour
 {
     // Public and private variables
     private Rigidbody targetRb;
+    private GameManager gameManager;
 
     private float minSpeed = 12;
     private float maxSpeed = 16;
@@ -17,11 +18,15 @@ public class Target : MonoBehaviour
     private float xRange = 4;
     private float ySpawnPos = -2;
 
+    public int pointValue;
+    public ParticleSystem explosionParticle;
+
     
     // Start is called before the first frame update
     void Start()
     {
         targetRb = gameObject.GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -37,16 +42,26 @@ public class Target : MonoBehaviour
     }
     
     
-    // Destroys GameObject when clicked with the mouse
+    // Destroys GameObject with an explosion when clicked with the mouse and adds 5 points to the score while Game is active
     private void OnMouseDown()
     {
-        Destroy(gameObject);
+        if (gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            gameManager.UpdateScore(pointValue);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        }
     }
 
-    // Destroys GameObject when it collides with the sensor 
+    // Destroys GameObject when it collides with the sensor and activates Game Over Text
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();   
+        }
     }
 
     
