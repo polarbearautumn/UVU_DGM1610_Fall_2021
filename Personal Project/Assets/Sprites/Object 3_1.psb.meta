@@ -25,6 +25,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
+    ignoreMasterTextureLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -79,7 +80,6 @@ ScriptedImporter:
       width: 0
       height: 0
     spriteID: 
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -103,7 +103,6 @@ ScriptedImporter:
       width: 1091
       height: 462
     spriteID: 4cd6828d0d3fe0b4a967dab09f06a4b0
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -132,16 +131,13 @@ ScriptedImporter:
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 2048
-  importedTextureHeight: 512
-  documentSize: {x: 1629, y: 1779}
+  layerMappingOption: 2
+  generatePhysicsShape: 0
   paperDollMode: 0
   keepDupilcateSpriteName: 1
   skeletonAssetReferenceID: 
   spriteCategoryList:
     categories: []
-  textureActualWidth: 2048
-  textureActualHeight: 512
   spritePackingTag: 
   resliceFromLayer: 0
   mosaicPSDLayers: []
@@ -153,7 +149,11 @@ ScriptedImporter:
     spriteID: 4cd6828d0d3fe0b4a967dab09f06a4b0
     layerID: 132
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
   generateGOHierarchy: 0
   textureAssetName: Object 3_1 Texture
   prefabAssetName: Object 3_1 Prefab
