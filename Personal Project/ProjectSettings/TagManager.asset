@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Enemy
   - Despawn Border
+  - SmorePiece
   layers:
   - Default
   - TransparentFX

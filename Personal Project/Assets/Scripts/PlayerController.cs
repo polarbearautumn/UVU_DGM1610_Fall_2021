@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
+
 {
+
+    public UnityEvent<string> onPlayerDead;
     
     // Public and private variables
     public float speed = 5.0f;
@@ -15,6 +19,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        onPlayerDead.Invoke("Hello");
+        
         playerRb = GetComponent<Rigidbody2D>();
     }
 
@@ -70,6 +76,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Object"))
         {
             Destroy(other.gameObject);
+            //invoke unity event here
+            //add canvas and ui manager script, have function that shows pickup text
+            //add that function to the list of callbacks in the unityevent
+            
+            //ask frez about enums
+            //smorepiece script on all pieces, smoretype variable w/graham cracker, chocolate, mallow
         }
         
         // If the player collides with an enemy, the player is destroyed.
