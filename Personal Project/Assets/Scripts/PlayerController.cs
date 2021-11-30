@@ -8,19 +8,17 @@ public class PlayerController : MonoBehaviour
 
 {
 
-    public UnityEvent<string> onPlayerDead;
-    
     // Public and private variables
-    public float speed = 5.0f;
-
-    private Rigidbody2D playerRb;
+     public UnityEvent onPlayerCollectSmore;
+     
+     public float speed = 5.0f;
+     
+     private Rigidbody2D playerRb;
     
     
     // Start is called before the first frame update
     void Start()
     {
-        onPlayerDead.Invoke("Hello");
-        
         playerRb = GetComponent<Rigidbody2D>();
     }
 
@@ -72,16 +70,14 @@ public class PlayerController : MonoBehaviour
     // Handles player collisions. 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // If the player collides with an object, the object is destroyed.
+        // If the player collides with an object, the object is destroyed. Invokes UnityEvent that pops up UI text.
         if (other.gameObject.CompareTag("Object"))
         {
             Destroy(other.gameObject);
-            //invoke unity event here
-            //add canvas and ui manager script, have function that shows pickup text
-            //add that function to the list of callbacks in the unityevent
-            
+            onPlayerCollectSmore.Invoke();
+
             //ask frez about enums
-            //smorepiece script on all pieces, smoretype variable w/graham cracker, chocolate, mallow
+            //put smorepiece script on all pieces, with a smoretype string variable for graham cracker, chocolate, & mallow
         }
         
         // If the player collides with an enemy, the player is destroyed.
