@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatData : MonoBehaviour
+public class FloatData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public float value;
+   
+    public void ReplaceValue(float number)
     {
-        
+        value = number;
+    }
+   
+    public void AddValue(float number)
+    {
+        value += number;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MultiplyValue(float number)
     {
-        
+        value *= number;
     }
+    
+    public void DivideValue(float number)
+    {
+        value /= number;
+    }
+
+    public void SubtractValue(float number)
+    {
+        value -= number;
+    }
+    
 }
