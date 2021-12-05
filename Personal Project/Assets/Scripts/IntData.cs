@@ -4,7 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[CreateAssetMenu]
 public class IntData : ScriptableObject
+
 {
    public int value;
    
@@ -28,13 +30,13 @@ public class IntData : ScriptableObject
       value -= number;
    }
 
-   public void ChangeImageFillAmount(Image img)
+   public void ChangeImageFillAmount(Image sprite)
    {
-      img.fillAmount = value;
+      sprite.fillAmount = value;
    }
 
-   public void DisplayNumber(TextMeshProUGUI text)
+   public void DisplayNumber(TextMeshProUGUI health)
    {
-      text.text = value.ToString();
+      health.text = value.ToString();
    }
 }
