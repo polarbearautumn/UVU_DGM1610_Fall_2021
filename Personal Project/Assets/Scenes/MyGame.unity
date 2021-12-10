@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1c344ca9c53b94b979fb3f7efd9d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects:
+  smorePiece:
   - {fileID: 5126318636259518106, guid: b080f06980e1d46478e2d18d67cf8c85, type: 3}
   - {fileID: 5810624603901948712, guid: 9861c1c73f9475545a64936ad809b053, type: 3}
   - {fileID: 4950425784287303941, guid: 92f366f487744694f955e1705c2bbeac, type: 3}

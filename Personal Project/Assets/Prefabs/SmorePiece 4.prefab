@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2522707789571011708}
   - component: {fileID: 2522707789571011711}
   m_Layer: 0
-  m_Name: Object 4
-  m_TagString: Object
+  m_Name: SmorePiece 4
+  m_TagString: SmorePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

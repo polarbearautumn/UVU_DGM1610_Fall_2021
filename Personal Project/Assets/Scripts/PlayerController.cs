@@ -71,12 +71,13 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // If the player collides with an object, the object is destroyed. Invokes UnityEvent that pops up UI text.
-        if (other.gameObject.CompareTag("Object"))
+        if (other.gameObject.CompareTag("SmorePiece"))
         {
             Destroy(other.gameObject);
             onPlayerCollectSmore.Invoke();
+            
 
-            //ask frez about enums
+            //ask about enums
             //put smorepiece script on all pieces, with a smoretype string variable for graham cracker, chocolate, & mallow
         }
         

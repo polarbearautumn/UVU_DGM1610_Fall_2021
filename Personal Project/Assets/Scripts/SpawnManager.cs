@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     // Public and private variables
-    public GameObject[] objects;
+    public GameObject[] smorePiece;
     public GameObject[] obstacles;
     public GameObject[] enemies;
 
@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnObjects();
+        SpawnSmorePieces();
         SpawnRandomObstacles();
         
         // Spawns enemies after a certain amount of time
@@ -39,19 +39,27 @@ public class SpawnManager : MonoBehaviour
     }
     
     
-    // Spawns all 4 different Objects in a random position on only the right half of the screen
-    void SpawnObjects()
+    // Spawns all 4 different smore pieces in a random position
+    void SpawnSmorePieces()
     {
         for (int i = 0; i < 4; i++)
         {
-            float randomX = Random.Range(0, xSpawnRange);
+            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
             float randomY = Random.Range(-ySpawnRange, ySpawnRange);
 
             Vector2 spawnPos = new Vector2(randomX, randomY);
 
-            Instantiate(objects[i], spawnPos, objects[i].transform.rotation);
+            Instantiate(smorePiece[i], spawnPos, smorePiece[i].transform.rotation);
         }
     }
+
+    // void RepawnSmore()
+    // {
+    //     if ()//player collects 4 smore pieces)
+    //     {
+    //         SpawnObjects();
+    //     }
+    // }
     
     
     // Spawns 5 random obstacles in a random position
