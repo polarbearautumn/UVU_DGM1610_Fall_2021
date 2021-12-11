@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,11 +10,15 @@ public class PlayerController : MonoBehaviour
 {
 
     // Public and private variables
+    public ParticleSystem collisionParticle;
+    public ParticleSystem collectParticle;
+    public GameObject deathParticle;
+    
     public UnityEvent onPlayerCollectSmore;
-     
-     public float speed = 5.0f;
-     
-     private Rigidbody2D playerRb;
+
+    public float speed = 5.0f;
+    
+    private Rigidbody2D playerRb;
     
     
     // Start is called before the first frame update
@@ -67,21 +72,32 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    // Handles player collisions. 
+    // Handles player collisions
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // If the player collides with an object, the object is destroyed. Invokes UnityEvent that pops up UI text.
+        // If the player collides with a smore piece, the smore piece is destroyed. A particle effect is played and it invokes a UnityEvent that pops up UI text
         if (other.gameObject.CompareTag("SmorePiece"))
         {
+            collectParticle.Play();
             Destroy(other.gameObject);
             onPlayerCollectSmore.Invoke();
             
         }
         
-        // If the player collides with an enemy, the player is destroyed.
+        // If the player collides with an enemy, the player is destroyed. A particle effect is played
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Instantiate(deathParticle, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        // If the player collides with an obstacle, a collision particle effect is played
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            collisionParticle.Play();
         }
     }
 }
