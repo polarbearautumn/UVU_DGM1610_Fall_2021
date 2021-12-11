@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
 
     // Public and private variables
-     public UnityEvent onPlayerCollectSmore;
+    public UnityEvent onPlayerCollectSmore;
      
      public float speed = 5.0f;
      
@@ -76,9 +76,6 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             onPlayerCollectSmore.Invoke();
             
-
-            //ask about enums
-            //put smorepiece script on all pieces, with a smoretype string variable for graham cracker, chocolate, & mallow
         }
         
         // If the player collides with an enemy, the player is destroyed.

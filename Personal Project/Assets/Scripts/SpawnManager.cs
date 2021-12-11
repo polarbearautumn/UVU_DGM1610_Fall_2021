@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] obstacles;
     public GameObject[] enemies;
 
+    public int collectedSmorePiece = 0;
+
     private float xSpawnRange = 8.4f;
     private float ySpawnRange = 4.4f;
 
@@ -53,13 +55,15 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    // void RepawnSmore()
-    // {
-    //     if ()//player collects 4 smore pieces)
-    //     {
-    //         SpawnObjects();
-    //     }
-    // }
+    public void PickUpSmorePiece()
+    {
+        collectedSmorePiece++;
+        if (collectedSmorePiece == 4)
+        {
+            SpawnSmorePieces();
+            collectedSmorePiece = 0;
+        }
+    }
     
     
     // Spawns 5 random obstacles in a random position

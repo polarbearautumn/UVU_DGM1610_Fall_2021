@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Despawn Border
   - SmorePiece
+  - Spawn Manager
   layers:
   - Default
   - TransparentFX

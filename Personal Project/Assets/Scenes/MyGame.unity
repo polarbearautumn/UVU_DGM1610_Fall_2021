@@ -388,7 +388,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 1057829276}
   m_Layer: 0
   m_Name: Spawn Manager
-  m_TagString: Untagged
+  m_TagString: Spawn Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,6 +522,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 556211767425114712, guid: 468b2497aab488d47b3a07feb9453e43, type: 3}
   - {fileID: 9197972977546247845, guid: 50d06c95beb9f764a959b86aa0aa1e27, type: 3}
+  collectedSmorePiece: 0
 --- !u!1 &1098524759
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerDead.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -858,16 +859,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
+      propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1098524760}
+    - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
+      propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1057829276}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
+      propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CollectSmore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
+      propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PickUpSmorePiece
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerDead.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -882,11 +899,19 @@ PrefabInstance:
       value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
+      propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SpawnManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
       propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978897978172030066, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
+      propertyPath: onPlayerCollectSmore.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7978897978172030067, guid: 9277bfc412c212146a31e933e3713a44, type: 3}
