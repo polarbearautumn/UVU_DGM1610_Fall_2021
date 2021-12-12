@@ -22,7 +22,9 @@ public class SpawnManager : MonoBehaviour
 
     private Vector2 direction;
 
-    
+    public UIManager uiManager;
+    public ParticleSystem scoreGlow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,8 @@ public class SpawnManager : MonoBehaviour
         
         // Spawns enemies after a certain amount of time
         InvokeRepeating("SpawnRandomEnemies", startDelay, enemySpawnTime);
+
+        uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
     }
 
     
@@ -55,6 +59,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // Once all 4 smore pieces are picked up, 4 new pieces are spawned
     public void PickUpSmorePiece()
     {
         collectedSmorePiece++;
@@ -62,6 +67,8 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnSmorePieces();
             collectedSmorePiece = 0;
+            uiManager.UpdateScore(1);
+            scoreGlow.Play();
         }
     }
     
