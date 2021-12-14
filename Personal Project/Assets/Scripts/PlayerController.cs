@@ -15,14 +15,14 @@ public class PlayerController : MonoBehaviour
     public GameObject deathParticle;
     
     public UnityEvent onPlayerCollectSmore;
-
+    public UIManager uiManager;
+    
     public float speed = 5.0f;
     
     private Rigidbody2D playerRb;
+
     
-    public UIManager uiManager;
-    
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,17 +33,13 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
-    // Moves the player using FixedUpdate rather than Update
+    // Moves the player using FixedUpdate rather than Update, only while the game is active
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (uiManager.isGameActive)
+        {
+            MovePlayer();
+        }
     }
 
     
@@ -98,6 +94,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         // If the player collides with an obstacle, a collision particle effect is played

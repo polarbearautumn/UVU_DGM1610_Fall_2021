@@ -26,12 +26,11 @@ public class SpawnManager : MonoBehaviour
     public UIManager uiManager;
     public ParticleSystem scoreGlow;
 
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-        SpawnSmorePieces();
-        SpawnRandomObstacles();
-        
         // Spawns enemies after a certain amount of time
         InvokeRepeating("SpawnRandomEnemies", startDelay, enemySpawnTime);
 
@@ -39,16 +38,9 @@ public class SpawnManager : MonoBehaviour
         uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
     }
 
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
-    
+
     // Spawns all 4 different smore pieces in a random position
-    void SpawnSmorePieces()
+    public void SpawnSmorePieces()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -61,6 +53,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    
     // Once all 4 smore pieces are picked up, 4 new pieces are spawned and the Smore score is updated
     public void PickUpSmorePiece()
     {
@@ -75,10 +68,10 @@ public class SpawnManager : MonoBehaviour
     }
     
     
-    // Spawns 5 random obstacles in a random position
-    void SpawnRandomObstacles()
+    // Spawns 8 random obstacles in a random position
+    public void SpawnRandomObstacles()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
             int randomIndex = Random.Range(0, obstacles.Length);
 
