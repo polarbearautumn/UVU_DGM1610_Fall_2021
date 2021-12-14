@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(deathParticle, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
+            uiManager.GameOver();
         }
     }
 

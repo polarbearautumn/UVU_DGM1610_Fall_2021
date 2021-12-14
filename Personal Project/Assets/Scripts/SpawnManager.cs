@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -91,25 +92,28 @@ public class SpawnManager : MonoBehaviour
     // Spawns a certain amount of enemies in a random direction 
     void SpawnRandomEnemies()
     {
-        for (int i = 0; i < 2; i++)
+        if (uiManager.isGameActive)
         {
-            int randomSpawnEnemyDirection = Random.Range(0, 4);
+            for (int i = 0; i < 2; i++)
+            {
+                int randomSpawnEnemyDirection = Random.Range(0, 4);
 
-            if (randomSpawnEnemyDirection == 0)
-            {
-                SpawnEnemyUp();
-            }
-            else if (randomSpawnEnemyDirection == 1)
-            {
-                SpawnEnemyDown();
-            }
-            else if (randomSpawnEnemyDirection == 2)
-            {
-                SpawnEnemyRight();
-            }
-            else if (randomSpawnEnemyDirection == 3)
-            {
-                SpawnEnemyLeft();
+                if (randomSpawnEnemyDirection == 0)
+                {
+                    SpawnEnemyUp();
+                }
+                else if (randomSpawnEnemyDirection == 1)
+                {
+                    SpawnEnemyDown();
+                }
+                else if (randomSpawnEnemyDirection == 2)
+                {
+                    SpawnEnemyRight();
+                }
+                else if (randomSpawnEnemyDirection == 3)
+                {
+                    SpawnEnemyLeft();
+                }
             }
         }
     }
