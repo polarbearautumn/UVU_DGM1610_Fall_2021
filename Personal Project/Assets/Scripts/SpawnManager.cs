@@ -34,6 +34,7 @@ public class SpawnManager : MonoBehaviour
         // Spawns enemies after a certain amount of time
         InvokeRepeating("SpawnRandomEnemies", startDelay, enemySpawnTime);
 
+        // Communicates with UIManager Script
         uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
     }
 
@@ -59,7 +60,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    // Once all 4 smore pieces are picked up, 4 new pieces are spawned
+    // Once all 4 smore pieces are picked up, 4 new pieces are spawned and the Smore score is updated
     public void PickUpSmorePiece()
     {
         collectedSmorePiece++;

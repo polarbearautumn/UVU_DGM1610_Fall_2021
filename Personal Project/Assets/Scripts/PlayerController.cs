@@ -20,12 +20,16 @@ public class PlayerController : MonoBehaviour
     
     private Rigidbody2D playerRb;
     
+    public UIManager uiManager;
     
     
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        
+        // Communicates with UIManager Script
+        uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
     }
 
     
@@ -76,13 +80,13 @@ public class PlayerController : MonoBehaviour
     // Handles player collisions
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // If the player collides with a smore piece, the smore piece is destroyed. A particle effect is played and it invokes a UnityEvent that pops up UI text
+        // If the player collides with a smore piece, the smore piece is destroyed. A particle effect is played and it updates the pieces collected score
         if (other.gameObject.CompareTag("SmorePiece"))
         {
             collectParticle.Play();
             Destroy(other.gameObject);
             onPlayerCollectSmore.Invoke();
-            
+            uiManager.UpdatePiecesScore(1);
         }
         
         // If the player collides with an enemy, the player is destroyed. A particle effect is played
