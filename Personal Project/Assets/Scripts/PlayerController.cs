@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    // Moves the player using FixedUpdate rather than Update, only while the game is active
+    // Moves the player using FixedUpdate rather than Update while the game is active
     private void FixedUpdate()
     {
         if (uiManager.isGameActive)
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = Vector3.zero;
         }
         
-        // Rotates player the angle it is faced while in motion using tangents
+        // Rotates player to the angle it is faced while in motion using tangents
         else
         {
             transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * angleRadians - offsetAngle);   
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     // Handles player collisions
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // If the player collides with a smore piece, the smore piece is destroyed. A particle effect is played and it updates the pieces collected score
+        // If the player collides with a smore piece, the smore piece is destroyed. A particle effect is played, a Unity Event is invoked, and it updates the pieces collected score
         if (other.gameObject.CompareTag("SmorePiece"))
         {
             collectParticle.Play();
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             uiManager.UpdatePiecesScore(1);
         }
         
-        // If the player collides with an enemy, the player is destroyed. A particle effect is played
+        // If the player collides with an enemy, the player is destroyed. A particle effect is played and the Game Over function is activated
         if (other.gameObject.CompareTag("Enemy"))
         {
             Instantiate(deathParticle, gameObject.transform.position, Quaternion.identity);
@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
     }
 
     
+    // Handles player collision with obstacles
     private void OnCollisionEnter2D(Collision2D other)
     {
         // If the player collides with an obstacle, a collision particle effect is played

@@ -4,12 +4,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
+
 {
+    
     // Public and private variables
     public GameObject[] smorePiece;
     public GameObject[] obstacles;
     public GameObject[] enemies;
-
+    
+    public UIManager uiManager;
+    public ParticleSystem scoreGlow;
+    
     public int collectedSmorePiece = 0;
 
     private float xSpawnRange = 8.4f;
@@ -23,11 +28,8 @@ public class SpawnManager : MonoBehaviour
 
     private Vector2 direction;
 
-    public UIManager uiManager;
-    public ParticleSystem scoreGlow;
 
-    
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     
-    // Once all 4 smore pieces are picked up, 4 new pieces are spawned and the Smore score is updated
+    // Once all 4 smore pieces are picked up, 4 new pieces are spawned, the smore piece count returns to 0, the smore score is updated, and a particle effect is played
     public void PickUpSmorePiece()
     {
         collectedSmorePiece++;
@@ -82,7 +84,7 @@ public class SpawnManager : MonoBehaviour
     }
 
 
-    // Spawns a certain amount of enemies in a random direction 
+    // Spawns a certain amount of enemies in a random direction if the game is active
     void SpawnRandomEnemies()
     {
         if (uiManager.isGameActive)

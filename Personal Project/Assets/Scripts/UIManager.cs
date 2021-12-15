@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
+
 {
+    
     // Public and private variables
     public TextMeshProUGUI piecesScoreText;
     public TextMeshProUGUI scoreText;
@@ -16,6 +18,7 @@ public class UIManager : MonoBehaviour
 
     public Button playAgainButton;
 
+    public GameObject playerPrefab;
     public GameObject titleScreen;
 
     public UnityEvent OnGameStart;
@@ -28,7 +31,7 @@ public class UIManager : MonoBehaviour
     
 
     
-    // When the game is started, the title is screen is set to inactive
+    // When the game is started, the scores appear, a Unity Event is invoked, the timer begins, the player appears, and the title screen disappears
     public void StartGame()
     {
         UpdatePiecesScore(0);
@@ -38,11 +41,13 @@ public class UIManager : MonoBehaviour
         OnGameStart.Invoke();
 
         StartCoroutine(StartTimer());
+        
+        playerPrefab.gameObject.SetActive(true);
         titleScreen.gameObject.SetActive(false);
     }
 
     
-    // Activates the Game Over screen and sets the game to be inactive
+    // Activates the Game Over screen and sets the game to inactive
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
@@ -77,7 +82,7 @@ public class UIManager : MonoBehaviour
     }
     
     
-    // Shows the "Pieces Collected:" text along with an updatable score
+    // Shows the "Pieces Collected:" text while the game is active, along with an updatable score
     public void UpdatePiecesScore(int piecesScoreToAdd)
     {
         piecesScoreText.gameObject.SetActive(true);
@@ -86,7 +91,7 @@ public class UIManager : MonoBehaviour
     }
     
     
-    // Shows the "'s Created:" text along with an updatable score
+    // Shows the "'s Created:" text while the game is active, along with an updatable score
     public void UpdateScore(int scoreToAdd)
     {
         scoreText.gameObject.SetActive(true);
