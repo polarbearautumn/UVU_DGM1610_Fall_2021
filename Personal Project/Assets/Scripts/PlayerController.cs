@@ -9,15 +9,15 @@ public class PlayerController : MonoBehaviour
 
 {
 
-    // Public and private variables
-    public ParticleSystem collisionParticle;
-    public ParticleSystem collectParticle;
-    public GameObject deathParticle;
+    // Variables
+    [SerializeField] private ParticleSystem collisionParticle;
+    [SerializeField] private ParticleSystem collectParticle;
+    [SerializeField] private GameObject deathParticle;
     
-    public UnityEvent onPlayerCollectSmore;
-    public UIManager uiManager;
+    [SerializeField] private UnityEvent onPlayerCollectSmore;
+    [SerializeField] private UIManager uiManager;
     
-    public float speed = 5.0f;
+    [SerializeField] private float speed = 5.0f;
     
     private Rigidbody2D playerRb;
 

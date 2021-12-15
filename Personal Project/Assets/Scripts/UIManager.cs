@@ -10,18 +10,18 @@ public class UIManager : MonoBehaviour
 
 {
     
-    // Public and private variables
-    public TextMeshProUGUI piecesScoreText;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
-    public TextMeshProUGUI timerText;
+    // Variables
+    [SerializeField] private TextMeshProUGUI piecesScoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI timerText;
 
-    public Button playAgainButton;
+    [SerializeField] private Button playAgainButton;
 
-    public GameObject playerPrefab;
-    public GameObject titleScreen;
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject titleScreen;
 
-    public UnityEvent OnGameStart;
+    [SerializeField] private UnityEvent onGameStart;
 
     public bool isGameActive;
     
@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
         UpdateScore(0);
 
         isGameActive = true;
-        OnGameStart.Invoke();
+        onGameStart.Invoke();
 
         StartCoroutine(StartTimer());
         

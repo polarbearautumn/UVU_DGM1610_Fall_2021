@@ -7,15 +7,15 @@ public class SpawnManager : MonoBehaviour
 
 {
     
-    // Public and private variables
-    public GameObject[] smorePiece;
-    public GameObject[] obstacles;
-    public GameObject[] enemies;
+    // Variables
+    [SerializeField] private GameObject[] smorePiece;
+    [SerializeField] private GameObject[] obstacles;
+    [SerializeField] private GameObject[] enemies;
     
-    public UIManager uiManager;
-    public ParticleSystem scoreGlow;
+    [SerializeField] private UIManager uiManager;
+    [SerializeField] private ParticleSystem scoreGlow;
     
-    public int collectedSmorePiece = 0;
+    [SerializeField] private int collectedSmorePiece = 0;
 
     private float xSpawnRange = 8.4f;
     private float ySpawnRange = 4.4f;
